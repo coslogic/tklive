@@ -1,101 +1,43 @@
 {
-  "name": "tokina",
-  "version": "0.1.0",
+  "name": "serum-history",
+  "version": "1.0.0",
+  "description": "Aggregate Serum DEX history for display in TradingView charts.",
+  "main": "index.js",
+  "repository": "https://github.com/blockworks-foundation/serum-history",
+  "author": "Blockworks Foundation",
+  "license": "MIT",
   "private": true,
-  "homepage": "https://tklive.herokuapp.com",
+  "devDependencies": {
+    "@types/bn.js": "^5.1.0",
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.11",
+    "@types/jasmine": "^3.6.3",
+    "@types/node": "^14.14.28",
+    "jasmine": "^3.6.4",
+    "jasmine-spec-reporter": "^6.0.0",
+    "jasmine-ts": "^0.3.0",
+    "ts-node": "8.10.2",
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^4.1.4"
+  },
   "dependencies": {
-    "@ant-design/icons": "^4.2.1",
-    "@craco/craco": "^5.6.4",
-    "@ledgerhq/hw-transport-webusb": "^5.41.0",
-    "@project-serum/associated-token": "0.1.0",
-    "@project-serum/awesome-serum": "1.0.1",
-    "@project-serum/pool": "0.2.2",
-    "@project-serum/serum": "^0.13.58",
-    "@project-serum/sol-wallet-adapter": "^0.2.0",
-    "@solana/spl-name-service": "^0.1.2",
-    "@solana/spl-token": "^0.1.6",
-    "@solana/spl-token-registry": "^0.2.229",
-    "@solana/web3.js": "^1.22.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@tsconfig/node12": "^1.0.7",
-    "@types/bn.js": "^4.11.6",
-    "@types/jest": "^26.0.14",
-    "@types/node": "^14.11.4",
-    "@types/react": "^16.9.51",
-    "@types/react-dom": "^16.9.8",
-    "antd": "^4.6.0",
-    "bn.js": "^5.1.3",
-    "craco-less": "^1.17.0",
-    "immutable-tuple": "^0.4.10",
-    "json-rpc-2.0": "^0.2.19",
-    "lodash-es": "^4.17.21",
-    "nanoid": "^3.1.22",
-    "qrcode.react": "^1.0.0",
-    "query-string": "^7.0.1",
-    "react": "^16.13.1",
-    "react-app-polyfill": "^1.0.5",
-    "react-copy-to-clipboard": "^5.0.2",
-    "react-dom": "^16.13.1",
-    "react-highlight-words": "^0.17.0",
-    "react-is": "^17.0.1",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
-    "styled-components": "^5.1.1",
-    "superstruct": "0.8.3",
-    "typescript": "^3.9.7"
+    "@project-serum/serum": "^0.13.20",
+    "@solana/web3.js": "^0.91.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "tedis": "^0.1.12"
   },
   "scripts": {
-    "predeploy": "git pull --ff-only && yarn && yarn build",
-    "deploy": "gh-pages -d build",
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject",
-    "prettier": "prettier --write src"
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev --files src/index.ts",
+    "clean": "rm -rf dist",
+    "prepare": "run-s clean postinstall",
+    "postinstall": "tsc",
+    "shell": "node -e \"$(< shell)\" -i --experimental-repl-await",
+    "test": "jasmine-ts --config=jasmine.json"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "jest": {
-    "transformIgnorePatterns": [
-      "^.+\\.cjs$"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "prettier": {
-    "singleQuote": true,
-    "arrowParens": "always",
-    "trailingComma": "all"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "devDependencies": {
-    "@types/ledgerhq__hw-transport": "^4.21.3",
-    "@types/ledgerhq__hw-transport-webusb": "^4.70.1",
-    "gh-pages": "^3.1.0",
-    "git-format-staged": "^2.1.0",
-    "husky": "^4.2.5",
-    "lint-staged": ">=10",
-    "prettier": "^2.0.5"
-  },
-  "lint-staged": {
-    "*.{js,jsx,css,md}": "prettier --write"
+  "engines": {
+    "node": "14.x"
   }
 }
