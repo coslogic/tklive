@@ -93,7 +93,7 @@ const password=process.env.PASSWORD
 
 const network = 'mainnet-beta'
 const clusterUrl =
-  process.env.RPC_ENDPOINT_URL || 'https://ssc-dao.genesysgo.net'
+  process.env.RPC_ENDPOINT_URL || 'https://solana-api.projectserum.com'
 const programIdV3 = '9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin'
 
 const nativeMarketsV3: Record<string, string> = {
