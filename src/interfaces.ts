@@ -50,4 +50,3 @@ export interface KeyValStore {
   storeNumber: (key: string, val: number) => Promise<void>;
   loadNumber: (key: string) => Promise<number | undefined>;
 };
-
